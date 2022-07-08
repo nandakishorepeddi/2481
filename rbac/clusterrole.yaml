@@ -1,0 +1,98 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: "2022-07-08T02:12:21Z"
+  name: bigip-controller-role
+  resourceVersion: "5010925"
+  uid: 5d069fc9-2de3-46c7-a46c-c5509ab8716a
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  - nodes
+  - services
+  - namespaces
+  - secrets
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - events
+  - services/status
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - create
+  - patch
+- apiGroups:
+  - extensions
+  - networking.k8s.io
+  resources:
+  - ingresses
+  - ingressclasses
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cis.f5.com
+  resources:
+  - virtualservers
+  - tlsprofiles
+  - transportservers
+  - externaldns
+  - externaldnses
+  - externaldnss
+  - ingresslinks
+  - virtualservers/status
+  - transportservers/status
+  - policies
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+- apiGroups:
+  - fic.f5.com
+  resources:
+  - ipams
+  - ipams/status
+  verbs:
+  - get
+  - list
+  - update
+  - watch
+  - create
+  - patch
+  - delete
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+  - list
+  - update
+  - watch
+  - create
+  - patch
+- apiGroups:
+  - extensions
+  - networking.k8s.io
+  resources:
+  - ingresses/status
+  verbs:
+  - get
+  - list
+  - update
+  - watch
+  - create
+  - patch

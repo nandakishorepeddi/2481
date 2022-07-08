@@ -1,0 +1,142 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-07-08T03:24:08Z"
+    generation: 1
+    labels:
+      name: svc-443
+    name: svc-443
+    namespace: istio-gateway
+    resourceVersion: "5013192"
+    uid: b754d318-9b49-4ddf-bb7f-761d8ef8499d
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: svc-443
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: svc-443
+      spec:
+        containers:
+        - env:
+          - name: service_name
+            value: svc-443
+          image: f5networksdevel/test-nginx:latest
+          imagePullPolicy: IfNotPresent
+          name: svc-443
+          ports:
+          - containerPort: 443
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-07-08T03:24:10Z"
+      lastUpdateTime: "2022-07-08T03:24:10Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-07-08T03:24:08Z"
+      lastUpdateTime: "2022-07-08T03:24:10Z"
+      message: ReplicaSet "svc-443-57b4674968" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2022-07-08T03:23:40Z"
+    generation: 1
+    labels:
+      name: svc-444
+    name: svc-444
+    namespace: istio-gateway
+    resourceVersion: "5013127"
+    uid: 8878e831-f0fe-4c16-bdbb-ed2c338e817c
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: svc-444
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: svc-444
+      spec:
+        containers:
+        - env:
+          - name: service_name
+            value: svc-444
+          image: f5networksdevel/test-nginx:latest
+          imagePullPolicy: IfNotPresent
+          name: svc-444
+          ports:
+          - containerPort: 443
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2022-07-08T03:23:42Z"
+      lastUpdateTime: "2022-07-08T03:23:42Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-07-08T03:23:40Z"
+      lastUpdateTime: "2022-07-08T03:23:42Z"
+      message: ReplicaSet "svc-444-65f4c85567" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

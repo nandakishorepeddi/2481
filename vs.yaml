@@ -1,0 +1,66 @@
+apiVersion: v1
+items:
+- apiVersion: cis.f5.com/v1
+  kind: VirtualServer
+  metadata:
+    annotations:
+      domian: foo.com
+    creationTimestamp: "2022-07-08T03:10:34Z"
+    generation: 1
+    labels:
+      f5cr: "true"
+    name: ascendlearning-external-https
+    namespace: istio-gateway
+    resourceVersion: "5012191"
+    uid: a848dc43-064f-422c-8064-58d4fc268573
+  spec:
+    httpTraffic: allow
+    pools:
+    - monitor:
+        interval: 3
+        send: "GET / HTTP/1.1\r\nHost: \r\nConnection: Close\r\n\r\n"
+        timeout: 5
+        type: http
+      path: /
+      service: svc-443
+      servicePort: 443
+    tlsProfileName: cr-tls-foo-svc-1
+    virtualServerAddress: 10.182.221.50
+    virtualServerName: ascendlearning-external-https
+  status:
+    status: Ok
+    vsAddress: None
+- apiVersion: cis.f5.com/v1
+  kind: VirtualServer
+  metadata:
+    annotations:
+      domian: foo.com
+    creationTimestamp: "2022-07-08T03:10:34Z"
+    generation: 1
+    labels:
+      f5cr: "true"
+    name: ascendlearning-internal-https
+    namespace: istio-gateway
+    resourceVersion: "5012190"
+    uid: d7a47fa1-560e-470a-8e8a-3213234ecd52
+  spec:
+    httpTraffic: allow
+    pools:
+    - monitor:
+        interval: 3
+        send: "GET / HTTP/1.1\r\nHost: \r\nConnection: Close\r\n\r\n"
+        timeout: 5
+        type: http
+      path: /
+      service: svc-444
+      servicePort: 443
+    tlsProfileName: cr-tls-foo-svc-1
+    virtualServerAddress: 10.182.221.51
+    virtualServerName: ascendlearning-internal-https
+  status:
+    status: Ok
+    vsAddress: None
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

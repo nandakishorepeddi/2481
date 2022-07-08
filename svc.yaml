@@ -1,0 +1,66 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-07-08T03:24:08Z"
+    labels:
+      app: svc-443
+    name: svc-443
+    namespace: istio-gateway
+    resourceVersion: "5013168"
+    uid: 5724c8ca-534d-486c-b06a-5701e3085c38
+  spec:
+    clusterIP: 10.106.37.43
+    clusterIPs:
+    - 10.106.37.43
+    externalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: svc-443-443
+      nodePort: 32556
+      port: 443
+      protocol: TCP
+      targetPort: 443
+    selector:
+      app: svc-443
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2022-07-08T03:23:40Z"
+    labels:
+      app: svc-444
+    name: svc-444
+    namespace: istio-gateway
+    resourceVersion: "5013100"
+    uid: db0eefd1-749f-4363-99b1-125956c62c43
+  spec:
+    clusterIP: 10.99.0.36
+    clusterIPs:
+    - 10.99.0.36
+    externalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: svc-444-443
+      nodePort: 31021
+      port: 443
+      protocol: TCP
+      targetPort: 443
+    selector:
+      app: svc-444
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
